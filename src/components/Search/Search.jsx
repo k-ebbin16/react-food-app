@@ -4,7 +4,7 @@ import { config } from "../../../config";
 const URL = "https://api.spoonacular.com/recipes/complexSearch";
 const API_KEY = config.MY_KEY;
 
-function Search() {
+function Search({ foodData, setFoodData }) {
     const [query, setQuery] = useState("pizza");
 
     useEffect(() => {
@@ -13,6 +13,7 @@ function Search() {
             const data = await res.json();
 
             console.log(data.results);
+            setFoodData(data.results);
         }
 
         fetchFood();
